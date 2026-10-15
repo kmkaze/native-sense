@@ -1,25 +1,66 @@
 {
   "expo": {
-    "name": "native-sense",
+    "name": "NativeSense",
     "slug": "native-sense",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "scheme": "nativesense",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nativesense.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "NativeSense uses the camera to take photos.",
+        "NSLocationWhenInUseUsageDescription": "NativeSense uses your location to show coordinates.",
+        "NSMotionUsageDescription": "NativeSense reads the accelerometer for motion sensing."
+      }
     },
     "android": {
+      "package": "com.nativesense.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0F0F23",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "READ_MEDIA_IMAGES",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "NativeSense uses the camera to take photos."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "NativeSense uses your location to show coordinates."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "NativeSense saves photos to your gallery."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
